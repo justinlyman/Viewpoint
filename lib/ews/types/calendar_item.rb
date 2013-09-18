@@ -8,6 +8,8 @@ module Viewpoint::EWS::Types
       recurring?:   [:is_recurring, :text],
       meeting?:     [:is_meeting, :text],
       cancelled?:   [:is_cancelled, :text],
+      start:        [:start, :text],
+      end:          [:end, :text] 
     }
 
     CALENDAR_ITEM_KEY_TYPES = {
@@ -15,8 +17,8 @@ module Viewpoint::EWS::Types
       meeting?:     ->(str){str.downcase == 'true'},
       cancelled?:   ->(str){str.downcase == 'true'},
     }
+    
     CALENDAR_ITEM_KEY_ALIAS = {}
-
 
     private
 
@@ -31,7 +33,6 @@ module Viewpoint::EWS::Types
     def key_alias
       super.merge(CALENDAR_ITEM_KEY_ALIAS)
     end
-
 
   end
 end
